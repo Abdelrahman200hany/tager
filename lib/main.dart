@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tager/core/helpers/generate_routes.dart';
+import 'package:tager/feature/presention/views/splash_view.dart';
 
 void main() {
   runApp(const Tager());
@@ -9,6 +11,10 @@ class Tager extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false ,
+      onGenerateRoute:onGenerateRoute ,
+      initialRoute: SplashView.routeName,
+    );
   }
 }
