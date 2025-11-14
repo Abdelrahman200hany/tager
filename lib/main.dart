@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tager/core/helpers/generate_routes.dart';
-import 'package:tager/feature/presention/views/splash_view.dart';
+import 'package:tager/feature/Splash_feature/data/presention/views/splash_view.dart';
 
 void main() {
   runApp(const Tager());
