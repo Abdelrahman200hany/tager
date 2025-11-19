@@ -1,7 +1,10 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:tager/core/uitls/Assets.dart';
+import 'package:tager/core/consts/consts.dart';
+import 'package:tager/core/servies/shared_Preferense_singleton.dart';
+import 'package:tager/core/uitls/assets.dart';
+import 'package:tager/feature/auth_feature/presentaion/views/auth_view.dart';
 import 'package:tager/feature/onBoarding_feature/presentaion/views/on_Boarding_view.dart';
 
 class SplashViewBody extends StatefulWidget {
@@ -15,7 +18,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   @override
   void initState() {
     super.initState();
-    splahNavigate();
+    excuteNavigate();
   }
 
   @override
@@ -59,10 +62,15 @@ class _SplashViewBodyState extends State<SplashViewBody> {
     );
   }
 
-  void splahNavigate() {
-    Future.delayed(
-      Duration(seconds: 4, milliseconds: 30),
-      () => Navigator.pushReplacementNamed(context, OnBoardingView.routeName),
-    );
+  void excuteNavigate() {
+    bool isOnBoardingSeen = Prefs.getBool(kOnBoadrdingViewSeen);
+
+    Future.delayed(Duration(seconds: 4, milliseconds: 30), () {
+      if (isOnBoardingSeen) {
+        Navigator.pushReplacementNamed(context, AuthView.routeName);
+      } else {
+        Navigator.pushReplacementNamed(context, OnBoardingView.routeName);
+      }
+    });
   }
 }

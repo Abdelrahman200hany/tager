@@ -3,10 +3,10 @@ import 'package:tager/feature/onBoarding_feature/presentaion/views/widgets/on_bo
 
 class OnBoardingView extends StatelessWidget {
   const OnBoardingView({super.key});
-  static const String routeName = '/onBoarding' ;
+  static const String routeName = 'onBoarding' ;
 
   @override
   Widget build(BuildContext context) {
-    return  OnBoardingViewBody();
+    return const  OnBoardingViewBody();
   }
 }
