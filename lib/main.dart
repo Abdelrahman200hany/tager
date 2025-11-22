@@ -2,7 +2,8 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:tager/core/helpers/generate_routes.dart';
-import 'package:tager/core/servies/shared_Preferense_singleton.dart';
+import 'package:tager/core/servies/shared_preferense_singleton.dart';
+import 'package:tager/core/uitls/app_color.dart';
 import 'package:tager/feature/Splash_feature/data/presention/views/splash_view.dart';
 import 'package:tager/generated/l10n.dart';
 
@@ -11,7 +12,7 @@ void main() async {
   await Prefs.init();
   runApp(
     DevicePreview(
-      enabled: false,
+      enabled: true,
       builder: (context) => const Tager(), // Wrap your app
     ),
   );
@@ -38,6 +39,15 @@ class Tager extends StatelessWidget {
 
       onGenerateRoute: onGenerateRoute,
       initialRoute: SplashView.routeName,
+      theme: ThemeData(
+        
+        colorScheme: ColorScheme.light(
+          primary:AppColor.kPrimaryColor,
+          
+        ),
+        scaffoldBackgroundColor: Colors.white,
+      
+      ),
     );
   }
 }

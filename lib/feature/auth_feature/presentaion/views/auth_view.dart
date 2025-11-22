@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tager/feature/auth_feature/presentaion/views/widgets/auth_veiw_body.dart';
 
 class AuthView extends StatelessWidget {
   const AuthView({super.key});
@@ -9,11 +10,3 @@ class AuthView extends StatelessWidget {
   }
 }
 
-class AuthViewBody extends StatelessWidget {
-  const AuthViewBody({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold();
-  }
-}

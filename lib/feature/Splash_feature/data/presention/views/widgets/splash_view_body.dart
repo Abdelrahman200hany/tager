@@ -2,7 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tager/core/consts/consts.dart';
-import 'package:tager/core/servies/shared_Preferense_singleton.dart';
+import 'package:tager/core/servies/shared_preferense_singleton.dart';
 import 'package:tager/core/uitls/assets.dart';
 import 'package:tager/feature/auth_feature/presentaion/views/auth_view.dart';
 import 'package:tager/feature/onBoarding_feature/presentaion/views/on_Boarding_view.dart';

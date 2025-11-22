@@ -1,10 +1,10 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:tager/core/consts/consts.dart';
-import 'package:tager/core/servies/shared_Preferense_singleton.dart';
+import 'package:tager/core/servies/shared_preferense_singleton.dart';
 import 'package:tager/core/uitls/app_color.dart';
+import 'package:tager/core/widgets/custom_text_bottom_with_background.dart';
 import 'package:tager/feature/auth_feature/presentaion/views/auth_view.dart';
-import 'package:tager/feature/onBoarding_feature/presentaion/views/widgets/custom_text_bottom.dart';
 import 'package:tager/feature/onBoarding_feature/presentaion/views/widgets/expanded_page_view.dart';
 
 class OnBoardingViewBody extends StatefulWidget {
@@ -64,7 +64,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
 
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 40),
-                child: CustomTextBottom(
+                child: CustomTextBottomWithBackground(
                   text: ' أبدا الان',
                   ontap: () {
                     Prefs.setBool(kOnBoadrdingViewSeen, true);

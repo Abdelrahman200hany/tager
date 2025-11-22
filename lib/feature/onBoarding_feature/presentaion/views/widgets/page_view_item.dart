@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tager/core/consts/consts.dart';
-import 'package:tager/core/servies/shared_Preferense_singleton.dart';
+import 'package:tager/core/servies/shared_preferense_singleton.dart';
 import 'package:tager/core/uitls/app_style.dart';
 import 'package:tager/feature/auth_feature/presentaion/views/auth_view.dart';
 import 'package:tager/feature/onBoarding_feature/data/models/onboading_view_item_model.dart';
