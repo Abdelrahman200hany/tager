@@ -7,7 +7,7 @@ class CustomTextFormFeild extends StatelessWidget {
     required this.hint,
     this.suffixIcon,
     required this.textInputType,
-    this.isHidden=false,
+    this.isHidden = false, this.onSaved,
   });
 
   final String hint;
@@ -15,18 +15,26 @@ class CustomTextFormFeild extends StatelessWidget {
   final TextInputType textInputType;
   final bool isHidden;
 
+final void Function(String?)? onSaved;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 54,
       width: double.infinity,
       child: TextFormField(
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'هذا الحقل مطلوب';
+          } else {
+            return null;
+          }
+        },
+        onSaved:onSaved ,
         obscureText: isHidden,
         keyboardType: textInputType,
         decoration: InputDecoration(
-          
           fillColor: const Color(0xffF9FAFA),
-          
+
           filled: true,
           hintText: hint,
           hintStyle: AppStyle.styleBold13(context),

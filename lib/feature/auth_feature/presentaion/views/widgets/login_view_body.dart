@@ -7,6 +7,7 @@ import 'package:tager/core/widgets/custom_app_bar.dart';
 import 'package:tager/core/widgets/custom_bottom.dart';
 import 'package:tager/core/widgets/custom_text_bottom.dart';
 import 'package:tager/core/widgets/custom_text_bottom_with_background.dart';
+import 'package:tager/core/widgets/custom_text_form__feild_for_password.dart';
 import 'package:tager/core/widgets/custom_text_form_feild.dart';
 import 'package:tager/feature/auth_feature/presentaion/views/forget_password_view.dart';
 import 'package:tager/feature/auth_feature/presentaion/views/sign_up_view.dart';
@@ -31,15 +32,7 @@ class LoginViewBody extends StatelessWidget {
                 textInputType: TextInputType.emailAddress,
               ),
               SizedBox(height: 16),
-              CustomTextFormFeild(
-                hint: 'كلمة المرور',
-                textInputType: TextInputType.visiblePassword,
-                suffixIcon: IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.visibility),
-                ),
-                isHidden: true,
-              ),
+             CustomTextFormFieldForPasswoed(),
               SizedBox(height: 15),
               Align(
                 alignment: Alignment.centerLeft,

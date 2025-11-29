@@ -27,7 +27,7 @@ class CustomHaveOrCreateNewAcountTextWidget extends StatelessWidget {
             style: AppStyle.styleBold16(
               context,
             ).copyWith(color: const Color(0xff1B5E37)),
-            recognizer: TapGestureRecognizer()..onTap = onTap,
+            recognizer: TapGestureRecognizer()..onTap=onTap,
           ),
         ],
       ),

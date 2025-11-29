@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tager/core/consts/consts.dart';
 import 'package:tager/core/widgets/custom_app_bar.dart';
 import 'package:tager/core/widgets/custom_text_bottom_with_background.dart';
+import 'package:tager/core/widgets/custom_text_form__feild_for_password.dart';
 import 'package:tager/core/widgets/custom_text_form_feild.dart';
 import 'package:tager/feature/auth_feature/presentaion/views/widgets/condition_widget.dart';
 import 'package:tager/feature/auth_feature/presentaion/views/widgets/have_or_create_new_account.dart';
@@ -35,17 +36,10 @@ class SignUPViewBody extends StatelessWidget {
                 textInputType: TextInputType.phone,
               ),
               SizedBox(height: 16),
-              CustomTextFormFeild(
-                hint: 'كلمة المرور',
-                textInputType: TextInputType.visiblePassword,
-                isHidden: true,
-                suffixIcon: IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.visibility),
-                ),
-              ),
+              CustomTextFormFieldForPasswoed(),
+
               SizedBox(height: 16),
-              CondtionWidget(),
+              CondtionWidget(onChanged: (value) {}),
               SizedBox(height: 16),
               CustomTextBottomWithBackground(text: 'إنشاء حساب جديد'),
               SizedBox(height: 16),
