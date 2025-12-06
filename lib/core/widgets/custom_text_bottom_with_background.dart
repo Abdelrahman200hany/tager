@@ -3,9 +3,15 @@ import 'package:tager/core/uitls/app_color.dart';
 import 'package:tager/core/uitls/app_style.dart';
 
 class CustomTextBottomWithBackground extends StatelessWidget {
-  const CustomTextBottomWithBackground({super.key, this.ontap, required this.text});
+  const CustomTextBottomWithBackground({
+    super.key,
+    this.ontap,
+    required this.text,
+    this.isLoading = false,
+  });
   final void Function()? ontap;
   final String text;
+  final bool isLoading;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -14,14 +20,14 @@ class CustomTextBottomWithBackground extends StatelessWidget {
       child: TextButton(
         onPressed: ontap,
         style: TextButton.styleFrom(
-          backgroundColor:AppColor.kPrimaryColor,
+          backgroundColor: AppColor.kPrimaryColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadiusGeometry.circular(16),
           ),
         ),
-        child: Center(
-          child: Text(text, style: AppStyle.styleBold16(context)),
-        ),
+        child: isLoading
+            ? CircularProgressIndicator(color: Colors.white)
+            : Center(child: Text(text, style: AppStyle.styleBold16(context))),
       ),
     );
   }

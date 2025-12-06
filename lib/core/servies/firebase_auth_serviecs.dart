@@ -1,0 +1,92 @@
+import 'dart:developer';
+
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:tager/errors/custom_expetion.dart';
+
+class FirebaseAuthServiecs {
+  Future<User> createUserWithEmailAndPassword({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      final credential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: email, password: password);
+      return credential.user!;
+    } on FirebaseAuthException catch (e) {
+      log(
+        'the error code in FirebaseAuthServiecs.createUserWithEmailAndPassword $e of type ${e.code}',
+      );
+      if (e.code == 'weak-password') {
+        throw CustomExpetion(message: 'كلمه المرور ضعيفه جدا');
+      } else if (e.code == 'email-already-in-use') {
+        throw CustomExpetion(message: ' الايميل مستخدم بالفعل ');
+      } else if (e.code == 'invalid-email') {
+        throw CustomExpetion(message: 'الايميل غير صالح');
+      } else if (e.code == 'operation-not-allowed') {
+        throw CustomExpetion(message: 'عمليه انشاء الحساب غير مسموحه حاليا');
+      } else if (e.code == 'user-disabled') {
+        throw CustomExpetion(message: 'تم تعطيل هذا المستخدم');
+      } else if (e.code == 'user-not-found') {
+        throw CustomExpetion(message: 'المستخدم غير موجود');
+      } else if (e.code == 'too-many-requests') {
+        throw CustomExpetion(message: 'تم ارسال العديد من الطلبات حاول لاحقا');
+      } else if (e.code == 'network-request-failed') {
+        throw CustomExpetion(message: 'لا يوجد اتصال بالانترنت');
+      } else if (e.code == 'network-error') {
+        throw CustomExpetion(message: 'لا يوجد اتصال بالانترنت');
+      } else if (e.code == 'unknown') {
+        throw CustomExpetion(message: 'حدث خطأ ما حاول مره اخري');
+      } else {
+        throw CustomExpetion(message: 'حدث خطأ ما حاول مره اخري');
+      }
+    } catch (e) {
+      log(
+        'the error in FirebaseAuthServiecs.createUserWithEmailAndPassword is $e',
+      );
+      throw CustomExpetion(message: 'حدث خطأ ما حاول مره اخري');
+    }
+  }
+
+  // login with email and passwrd method
+  Future<User> signInWithEmailAndPassword({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      return credential.user!;
+    } on FirebaseAuthException catch (e) {
+      log(
+        'the error code in FirebaseAuthServiecs.signInWithEmailAndPassword $e ofType ${e.code}',
+      );
+
+      if (e.code == 'invalid-email') {
+        throw CustomExpetion(message: 'الايميل غير صالح');
+      } else if (e.code == 'user-not-found') {
+        throw CustomExpetion(message: 'المستخدم غير موجود');
+      } else if (e.code == 'invalid-credential') {
+        throw CustomExpetion(
+          message: 'البريد الالكتروني او كلمه المرور غير صحيحه',
+        );
+      } else if (e.code == 'wrong-password') {
+        throw CustomExpetion(message: 'كلمه المرور غير صحيحه');
+      } else if (e.code == 'too-many-requests') {
+        throw CustomExpetion(message: 'تم ارسال العديد من الطلبات حاول لاحقا');
+      } else if (e.code == 'network-request-failed') {
+        throw CustomExpetion(message: 'لا يوجد اتصال بالانترنت');
+      } else if (e.code == 'network-error') {
+        throw CustomExpetion(message: 'لا يوجد اتصال بالانترنت');
+      } else {
+        throw CustomExpetion(message: 'حدث خطأ ما حاول مره اخري');
+      }
+    } catch (e) {
+      log('the error in FirebaseAuthServiecs.signInWithEmailAndPassword is $e');
+
+      throw CustomExpetion(message: 'حدث خطأما حاول مره اخري');
+    }
+  }
+
+}

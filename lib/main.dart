@@ -1,7 +1,10 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:tager/core/helpers/generate_routes.dart';
+import 'package:tager/core/servies/create_bloc_observer.dart';
+import 'package:tager/core/servies/create_singleton_servies_locator.dart';
 import 'package:tager/core/servies/shared_preferense_singleton.dart';
 import 'package:tager/core/uitls/app_color.dart';
 import 'package:tager/feature/Splash_feature/data/presention/views/splash_view.dart';
@@ -10,6 +13,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
 void main() async {
+  Bloc.observer = SimpleBlocObserver();
+  setupServiceLocator();
   WidgetsFlutterBinding.ensureInitialized();
   await Prefs.init();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
