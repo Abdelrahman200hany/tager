@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tager/core/uitls/app_style.dart';
 
-class customAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const customAppBar({
+class BuildAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const BuildAppBar({
     super.key,
     required this.title,
     this.wantedIconBack = false,

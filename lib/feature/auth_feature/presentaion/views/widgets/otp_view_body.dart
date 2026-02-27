@@ -14,7 +14,7 @@ class OtpViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar(title: 'التحقق من الرمز', wantedIconBack: true),
+      appBar: BuildAppBar(title: 'التحقق من الرمز', wantedIconBack: true),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: kHoriztailPadding),

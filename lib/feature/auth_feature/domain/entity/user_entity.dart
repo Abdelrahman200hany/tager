@@ -1,6 +1,8 @@
 class UserEntity {
-  final String name, id, email;
-  UserEntity({required this.name, required this.id, required this.email});
+  final String name, uId, email;
+  UserEntity({required this.name, required this.uId, required this.email});
+
+
 
   // factory UserEntity.fromFirebase(User user){
 

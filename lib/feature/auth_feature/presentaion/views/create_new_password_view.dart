@@ -21,7 +21,7 @@ class CreateNewPasswordViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar(title: 'كلمة مرور جديدة', wantedIconBack: true),
+      appBar: BuildAppBar(title: 'كلمة مرور جديدة', wantedIconBack: true),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: kHoriztailPadding),

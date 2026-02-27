@@ -13,11 +13,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // لازم أول حاجة
   Bloc.observer = SimpleBlocObserver();
-  setupServiceLocator();
-  WidgetsFlutterBinding.ensureInitialized();
   await Prefs.init();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  setupServiceLocator();
   runApp(
     DevicePreview(
       enabled: true,

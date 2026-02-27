@@ -12,7 +12,7 @@ class ForgetPasswordViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar(title: 'نسيان كلمة المرور', wantedIconBack: true),
+      appBar: BuildAppBar(title: 'نسيان كلمة المرور', wantedIconBack: true),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: kHoriztailPadding),

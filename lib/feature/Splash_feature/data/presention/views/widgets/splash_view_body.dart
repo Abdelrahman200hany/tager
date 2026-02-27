@@ -2,9 +2,11 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tager/core/consts/consts.dart';
+import 'package:tager/core/servies/firebase_auth_serviecs.dart';
 import 'package:tager/core/servies/shared_preferense_singleton.dart';
 import 'package:tager/core/uitls/assets.dart';
 import 'package:tager/feature/auth_feature/presentaion/views/auth_view.dart';
+import 'package:tager/feature/home/presentation/views/home_view.dart';
 import 'package:tager/feature/onBoarding_feature/presentaion/views/on_Boarding_view.dart';
 
 class SplashViewBody extends StatefulWidget {
@@ -33,7 +35,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
           Align(
             alignment: Alignment.topLeft,
             child: SvgPicture.asset(
-              Assets.assetsImagesPlant,
+              Assets.assetsImagePlant,
               fit: BoxFit.scaleDown,
             ),
           ),
@@ -43,7 +45,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
             child: Center(
               child: SizedBox(
                 child: SvgPicture.asset(
-                  Assets.assetsImagesLogo,
+                  Assets.assetsImageLogo,
                   fit: BoxFit.scaleDown,
                 ),
               ),
@@ -52,10 +54,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
 
           Padding(
             padding: EdgeInsets.only(bottom: 15),
-            child: SvgPicture.asset(
-              Assets.assetsImagesSplashBottom,
-              fit: BoxFit.fill,
-            ),
+            child: SvgPicture.asset(Assets.assetsImagePupl, fit: BoxFit.fill),
           ),
         ],
       ),
@@ -67,7 +66,12 @@ class _SplashViewBodyState extends State<SplashViewBody> {
 
     Future.delayed(Duration(seconds: 4, milliseconds: 30), () {
       if (isOnBoardingSeen) {
-        Navigator.pushReplacementNamed(context, AuthView.routeName);
+        bool isSignedIn = FirebaseAuthServiecs().isSignedIn();
+        if (isSignedIn) {
+          Navigator.pushReplacementNamed(context, HomeView.routeName);
+        } else {
+          Navigator.pushReplacementNamed(context, AuthView.routeName);
+        }
       } else {
         Navigator.pushReplacementNamed(context, OnBoardingView.routeName);
       }

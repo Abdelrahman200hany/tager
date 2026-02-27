@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tager/core/helpers/show_snack_bar.dart';
 import 'package:tager/core/servies/create_singleton_servies_locator.dart';
 import 'package:tager/feature/auth_feature/data/repos/auth_repo_impl.dart';
-import 'package:tager/feature/auth_feature/presentaion/cubits/create_user_with_email_and_password/create_user_with_email_and_password_cubit.dart';
+import 'package:tager/feature/auth_feature/presentaion/manager/auth_cubit/sign_up/sign_up_cubit.dart';
 import 'package:tager/feature/auth_feature/presentaion/views/widgets/sign_up_view_body.dart';
 
 class SignUPView extends StatelessWidget {

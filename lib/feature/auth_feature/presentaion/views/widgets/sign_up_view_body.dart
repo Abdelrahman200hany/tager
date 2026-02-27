@@ -6,7 +6,7 @@ import 'package:tager/core/widgets/custom_app_bar.dart';
 import 'package:tager/core/widgets/custom_text_bottom_with_background.dart';
 import 'package:tager/core/widgets/custom_text_form__feild_for_password.dart';
 import 'package:tager/core/widgets/custom_text_form_feild.dart';
-import 'package:tager/feature/auth_feature/presentaion/cubits/create_user_with_email_and_password/create_user_with_email_and_password_cubit.dart';
+import 'package:tager/feature/auth_feature/presentaion/manager/auth_cubit/sign_up/sign_up_cubit.dart';
 import 'package:tager/feature/auth_feature/presentaion/views/widgets/condition_widget.dart';
 import 'package:tager/feature/auth_feature/presentaion/views/widgets/have_or_create_new_account.dart';
 
@@ -27,7 +27,7 @@ class _SignUPViewBodyState extends State<SignUPViewBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar(title: 'تسجيل دخول', wantedIconBack: true),
+      appBar: BuildAppBar(title: 'تسجيل دخول', wantedIconBack: true),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: kHoriztailPadding),

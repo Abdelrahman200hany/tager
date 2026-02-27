@@ -10,12 +10,30 @@ abstract class AppStyle {
     );
   }
 
+  static TextStyle styleSRegular16(BuildContext context) {
+    return TextStyle(
+      fontSize: 16,
+      fontFamily: 'cairo',
+      fontWeight: FontWeight.w400,
+      color: const Color(0xFF949D9E),
+    );
+  }
+
   static TextStyle styleBold19(BuildContext context) {
     return TextStyle(
       fontSize: 19,
       fontFamily: 'cairo',
       fontWeight: FontWeight.bold,
       color: Colors.black,
+    );
+  }
+
+  static TextStyle styleSRegular13(BuildContext context) {
+    return TextStyle(
+      fontSize: 13,
+      fontFamily: 'cairo',
+      fontWeight: FontWeight.w400,
+      color: const Color(0xFF949D9E),
     );
   }
 
