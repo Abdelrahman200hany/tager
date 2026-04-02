@@ -5,9 +5,13 @@ abstract class DataBaseServies {
     String? documentID,
   });
 
-  Future<Map<String, dynamic>> readData({
-    required String documentID,
+  Future<dynamic> readData({
+    String? documentID,
     required String path,
+    Map<String, dynamic>? query,
   });
-  Future<bool> chekedDataIfExits({required String path, required String deumentID});
+  Future<bool> chekedDataIfExits({
+    required String path,
+    required String deumentID,
+  });
 }

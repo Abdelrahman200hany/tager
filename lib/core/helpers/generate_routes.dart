@@ -7,6 +7,7 @@ import 'package:tager/feature/auth_feature/presentaion/views/otp_view.dart';
 import 'package:tager/feature/auth_feature/presentaion/views/sign_up_view.dart';
 import 'package:tager/feature/home/presentation/views/home_view.dart';
 import 'package:tager/feature/home/presentation/views/notification_view.dart';
+import 'package:tager/feature/main_view/presentation/views/main_view.dart';
 import 'package:tager/feature/onBoarding_feature/presentaion/views/on_Boarding_view.dart';
 import 'package:tager/feature/search/presentation/views/search_view.dart';
 
@@ -30,12 +31,14 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(
         builder: (context) => const CreateNewPasswordView(),
       );
+    case MainView.routeName:
+      return MaterialPageRoute(builder: (context) => const MainView());
 
     case HomeView.routeName:
       return MaterialPageRoute(builder: (context) => const HomeView());
     case NotificationView.routeName:
       return MaterialPageRoute(builder: (context) => const NotificationView());
-       case SearchView.routeName:
+    case SearchView.routeName:
       return MaterialPageRoute(builder: (context) => const SearchView());
     default:
       return MaterialPageRoute(builder: (context) => const SplashView());

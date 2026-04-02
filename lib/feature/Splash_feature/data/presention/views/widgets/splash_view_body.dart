@@ -6,7 +6,7 @@ import 'package:tager/core/servies/firebase_auth_serviecs.dart';
 import 'package:tager/core/servies/shared_preferense_singleton.dart';
 import 'package:tager/core/uitls/assets.dart';
 import 'package:tager/feature/auth_feature/presentaion/views/auth_view.dart';
-import 'package:tager/feature/home/presentation/views/home_view.dart';
+import 'package:tager/feature/main_view/presentation/views/main_view.dart';
 import 'package:tager/feature/onBoarding_feature/presentaion/views/on_Boarding_view.dart';
 
 class SplashViewBody extends StatefulWidget {
@@ -68,7 +68,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       if (isOnBoardingSeen) {
         bool isSignedIn = FirebaseAuthServiecs().isSignedIn();
         if (isSignedIn) {
-          Navigator.pushReplacementNamed(context, HomeView.routeName);
+          Navigator.pushReplacementNamed(context, MainView.routeName);
         } else {
           Navigator.pushReplacementNamed(context, AuthView.routeName);
         }

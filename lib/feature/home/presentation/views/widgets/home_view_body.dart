@@ -4,6 +4,7 @@ import 'package:tager/feature/home/presentation/views/widgets/custom_home_app_ba
 import 'package:tager/feature/home/presentation/views/widgets/fake_app_bar.dart';
 import 'package:tager/feature/home/presentation/views/widgets/feature_list.dart';
 import 'package:tager/feature/home/presentation/views/widgets/header_top_line.dart';
+import 'package:tager/feature/home/presentation/views/widgets/product_item_list.dart';
 import 'package:tager/feature/search/presentation/views/search_view.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -36,10 +37,11 @@ class HomeViewBody extends StatelessWidget {
             ),
             SliverToBoxAdapter(
               child: Padding(
-                padding: EdgeInsets.only(top: 18),
+                padding: EdgeInsets.only(top: 18, bottom: 18),
                 child: HeaderTopline(),
               ),
             ),
+            ProductitemList(),
           ],
         ),
       ),

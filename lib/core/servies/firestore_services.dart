@@ -1,4 +1,3 @@
-
 import 'package:tager/core/servies/data_base_servies.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -18,12 +17,33 @@ class FireStoreServices implements DataBaseServies {
   }
 
   @override
-  Future<Map<String, dynamic>> readData({
-    required String documentID,
+  Future<dynamic> readData({
+    String? documentID,
     required String path,
+    Map<String, dynamic>? query,
   }) async {
-    var data = await firestore.collection(path).doc(documentID).get();
-    return data.data() as Map<String, dynamic>;
+    if (documentID != null) {
+      var data = await firestore.collection(path).doc(documentID).get();
+      return data.data() as Map<String, dynamic>;
+    } else {
+      CollectionReference<Map<String, dynamic>> data = firestore.collection(
+        path,
+      );
+
+      if (query != null) {
+        if (query['orderBy'] != null) {
+          var orderByFeild = query['orderBy'];
+          bool descending = query['descending'];
+          data.orderBy(orderByFeild, descending: descending);
+        }
+        if (query['limit'] != null) {
+          int limit = query['limit'];
+          data.limit(limit);
+        }
+        var result = await data.get();
+        return result.docs.map((e) => e.data()).toList();
+      }
+    }
   }
 
   @override
