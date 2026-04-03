@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tager/core/uitls/app_color.dart';
+import 'package:tager/feature/catogry/presentation/views/catogry_view.dart';
 import 'package:tager/feature/home/presentation/views/home_view.dart';
 
 class MainViewBody extends StatefulWidget {
@@ -18,7 +19,7 @@ class _MainViewBodyState extends State<MainViewBody> {
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: AppColor.kPrimaryColorLight,
         unselectedItemColor: Colors.grey,
-      
+
         currentIndex: currentIndex,
         onTap: (value) {
           currentIndex = value;
@@ -28,18 +29,21 @@ class _MainViewBodyState extends State<MainViewBody> {
           BottomNavigationBarItem(label: 'الرئيسة', icon: Icon(Icons.home)),
           BottomNavigationBarItem(
             label: 'السلة',
-            icon: Icon(Icons.card_travel_outlined),
+            icon: Icon(Icons.category_outlined),
           ),
           BottomNavigationBarItem(
             label: 'المفضلة',
-            icon: Icon(Icons.favorite_outline_outlined),
+            icon: Icon(Icons.card_travel_outlined),
           ),
-          BottomNavigationBarItem(label: 'الاعدادات', icon: Icon(Icons.settings)),
+          BottomNavigationBarItem(
+            label: 'الاعدادات',
+            icon: Icon(Icons.settings),
+          ),
         ],
       ),
       body: IndexedStack(
         index: currentIndex,
-        children: [HomeView(), SizedBox(), SizedBox(), SizedBox()],
+        children: [HomeView(), CatogryView(), SizedBox(), SizedBox()],
       ),
     );
   }

@@ -40,9 +40,9 @@ class FireStoreServices implements DataBaseServies {
           int limit = query['limit'];
           data.limit(limit);
         }
-        var result = await data.get();
-        return result.docs.map((e) => e.data()).toList();
       }
+      var result = await data.get();
+      return result.docs.map((e) => e.data()).toList();
     }
   }
 

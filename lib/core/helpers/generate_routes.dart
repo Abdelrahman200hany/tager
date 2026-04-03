@@ -5,6 +5,7 @@ import 'package:tager/feature/auth_feature/presentaion/views/create_new_password
 import 'package:tager/feature/auth_feature/presentaion/views/forget_password_view.dart';
 import 'package:tager/feature/auth_feature/presentaion/views/otp_view.dart';
 import 'package:tager/feature/auth_feature/presentaion/views/sign_up_view.dart';
+import 'package:tager/feature/catogry/presentation/views/catogry_view.dart';
 import 'package:tager/feature/home/presentation/views/home_view.dart';
 import 'package:tager/feature/home/presentation/views/notification_view.dart';
 import 'package:tager/feature/main_view/presentation/views/main_view.dart';
@@ -33,6 +34,12 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       );
     case MainView.routeName:
       return MaterialPageRoute(builder: (context) => const MainView());
+        case CatogryView.routeName:
+      return MaterialPageRoute(builder: (context) => const CatogryView());
+      
+
+
+
 
     case HomeView.routeName:
       return MaterialPageRoute(builder: (context) => const HomeView());

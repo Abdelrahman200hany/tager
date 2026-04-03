@@ -14,14 +14,16 @@ class BuildAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.transparent,
-      leading: wantedIconBack
-          ? IconButton(
-              icon: Icon(Icons.arrow_back_ios),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            )
-          : SizedBox(),
+      leading: Visibility(
+        visible: wantedIconBack,
+        child: IconButton(
+          icon: Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
+
       title: Text(
         title,
         style: AppStyle.styleBold19(
