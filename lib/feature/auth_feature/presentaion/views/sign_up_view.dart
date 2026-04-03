@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tager/core/helpers/show_snack_bar.dart';
 import 'package:tager/core/servies/create_singleton_servies_locator.dart';
-import 'package:tager/feature/auth_feature/data/repos/auth_repo_impl.dart';
+import 'package:tager/feature/auth_feature/domain/repos/auth_repo.dart';
 import 'package:tager/feature/auth_feature/presentaion/manager/auth_cubit/sign_up/sign_up_cubit.dart';
-import 'package:tager/feature/auth_feature/presentaion/views/widgets/sign_up_view_body.dart';
+import 'package:tager/feature/auth_feature/presentaion/views/widgets/sign_up_view_body_bloc_builder.dart';
 
 class SignUPView extends StatelessWidget {
   const SignUPView({super.key});
@@ -14,32 +13,8 @@ class SignUPView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          CreateUserWithEmailAndPasswordCubit(getIt.get<AuthRepoImpl>()),
-      child: Builder(
-        builder: (context) {
-          return BlocConsumer<
-            CreateUserWithEmailAndPasswordCubit,
-            CreateUserWithEmailAndPasswordState
-          >(
-            listener: (context, state) {
-              if (state is CreateUserWithEmailAndPasswordfailureState) {
-                showSnackBarMessage(context, state.errormessage);
-              } else if (state is CreateUserWithEmailAndPasswordSuccessState) {
-                showSnackBarMessage(context, 'تم إنشاء الحساب بنجاح');
-                Navigator.pop(context);
-              }
-            },
-            builder: (context, state) {
-              return SignUPViewBody(
-                isLoadingState:
-                    state is CreateUserWithEmailAndPasswordLoadingState
-                    ? true
-                    : false,
-              );
-            },
-          );
-        },
-      ),
+          CreateUserWithEmailAndPasswordCubit(getIt.get<AuthRepo>()),
+      child:const SingUpViewBodyBlocBuilder(),
     );
   }
 }

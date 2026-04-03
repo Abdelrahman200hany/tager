@@ -1,21 +1,21 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:tager/feature/auth_feature/data/repos/auth_repo_impl.dart';
 import 'package:tager/feature/auth_feature/domain/entity/user_entity.dart';
+import 'package:tager/feature/auth_feature/domain/repos/auth_repo.dart';
 
 part 'sign_in_state.dart';
 
 class SignInCubit extends Cubit<SignInState> {
-  SignInCubit(this.authRepoImpl) : super(SignInInitialState());
+  SignInCubit(this.authRepo) : super(SignInInitialState());
 
-  final AuthRepoImpl authRepoImpl;
+  final AuthRepo authRepo;
 
   Future<void> signinWithEmailAndPassword({
     required String email,
     required String password,
   }) async {
     emit(SignInLoadingState());
-    var result = await authRepoImpl.signinWithEmailAndPassword(
+    var result = await authRepo.signinWithEmailAndPassword(
       email: email,
       password: password,
     );
@@ -31,7 +31,7 @@ class SignInCubit extends Cubit<SignInState> {
 
   Future<void> signinWithGoogle() async {
     emit(SignInLoadingState());
-    var result = await authRepoImpl.signinWithGoogle();
+    var result = await authRepo.signinWithGoogle();
     result.fold(
       (failure) {
         emit(SignInFailureState(errormessage: failure.message));
@@ -44,7 +44,7 @@ class SignInCubit extends Cubit<SignInState> {
 
   Future<void> signInWithFacebook() async {
     emit(SignInLoadingState());
-    var result = await authRepoImpl.signInWithFacebook();
+    var result = await authRepo.signInWithFacebook();
 
     result.fold(
       (faulire) {

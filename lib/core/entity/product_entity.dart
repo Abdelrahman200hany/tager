@@ -1,4 +1,4 @@
-import 'dart:io';
+
 
 import 'package:tager/core/entity/review_entity.dart';
 
@@ -11,7 +11,6 @@ class ProductEntity {
   final num avgRating = 0, ratingCount = 0;
   final List<ReviewEntitiy> reviews;
 
-  final File productImageFile;
   String? productImage;
 
   ProductEntity({
@@ -24,7 +23,7 @@ class ProductEntity {
     required this.numberOfCalories,
     required this.expretationsMounths,
     required this.isFeature,
-    required this.productImageFile,
+
     this.productImage,
     this.isOrganic = false,
   });

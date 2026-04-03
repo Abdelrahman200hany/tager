@@ -10,7 +10,7 @@ import 'package:tager/errors/failure.dart';
 class GetProductRFepoImpt implements GetProductRepo {
   final DataBaseServies dataBaseServies;
 
-  GetProductRFepoImpt({required this.dataBaseServies});
+  GetProductRFepoImpt(this.dataBaseServies);
   @override
   Future<Either<Failure, List<ProductEntity>>> getBestSellingProducts() async {
     try {
@@ -30,7 +30,9 @@ class GetProductRFepoImpt implements GetProductRepo {
           .toList();
       return Right(products);
     } catch (e) {
-      log('the expection is in getProducts in get Product Repo implt is  $e');
+      log(
+        'the expection is in getBestSellingProducts in get Product Repo implt is  $e',
+      );
       return Left(ServerFailure(message: 'فشل في جلب المنتجات'));
     }
   }

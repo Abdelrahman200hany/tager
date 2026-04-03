@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg_provider/flutter_svg_provider.dart' as svg;
+import 'package:tager/core/entity/product_entity.dart';
 import 'package:tager/core/uitls/app_color.dart';
 import 'package:tager/core/uitls/app_style.dart';
 import 'package:tager/core/uitls/assets.dart';
 import 'package:tager/feature/home/presentation/views/widgets/increment_widget.dart';
 
 class ProductItem extends StatelessWidget {
-  const ProductItem({super.key});
+  const ProductItem({super.key, required this.item});
+
+  final ProductEntity item;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,9 @@ class ProductItem extends StatelessWidget {
                 Container(
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: svg.Svg(Assets.assetsImageOnBording1),
+                      image: item.productImage == null
+                          ? AssetImage(Assets.assetsImageMyphoto)
+                          : NetworkImage(item.productImage!),
                       fit: BoxFit.scaleDown,
                     ),
                   ),
@@ -44,13 +48,13 @@ class ProductItem extends StatelessWidget {
           ListTile(
             contentPadding: EdgeInsets.zero,
             title: Text(
-              'فراولة',
+              item.productName,
               style: AppStyle.styleSemiBold13(
                 context,
               ).copyWith(color: const Color(0xFF0C0D0D)),
             ),
             subtitle: Text(
-              '20جنية / الكيلو',
+              '${item.productPrice} جنية / الكيلو',
               style: AppStyle.styleSRegular13(
                 context,
               ).copyWith(color: AppColor.kSecondyColorLight),

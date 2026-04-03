@@ -4,8 +4,8 @@ import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:tager/core/consts/consts.dart';
+import 'package:tager/core/servies/data_base_servies.dart';
 import 'package:tager/core/servies/firebase_auth_serviecs.dart';
-import 'package:tager/core/servies/firestore_services.dart';
 import 'package:tager/core/servies/shared_preferense_singleton.dart';
 import 'package:tager/core/uitls/backend_endpoint.dart';
 import 'package:tager/errors/custom_expetion.dart';
@@ -16,9 +16,9 @@ import 'package:tager/feature/auth_feature/domain/repos/auth_repo.dart';
 
 class AuthRepoImpl extends AuthRepo {
   final FirebaseAuthServiecs firebaseAuthServies;
-  final FireStoreServices firestore;
+  final DataBaseServies dataBaseServies;
 
-  AuthRepoImpl(this.firebaseAuthServies, this.firestore);
+  AuthRepoImpl(this.firebaseAuthServies, this.dataBaseServies);
   @override
   Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword({
     required String email,
@@ -75,7 +75,7 @@ class AuthRepoImpl extends AuthRepo {
       user = await firebaseAuthServies.signInWithGoogle();
 
       var userEntity = UserModel.fromFirebaseUser(user);
-      bool userDataExits = await firestore.chekedDataIfExits(
+      bool userDataExits = await dataBaseServies.chekedDataIfExits(
         deumentID: userEntity.uId,
         path: BackEndEndPoint.checkIfUserIsExits,
       );
@@ -103,7 +103,7 @@ class AuthRepoImpl extends AuthRepo {
     try {
       user = await firebaseAuthServies.signInWithFacebook();
       var userEntity = UserModel.fromFirebaseUser(user);
-      bool userDataExits = await firestore.chekedDataIfExits(
+      bool userDataExits = await dataBaseServies.chekedDataIfExits(
         deumentID: userEntity.uId,
         path: BackEndEndPoint.checkIfUserIsExits,
       );
@@ -133,7 +133,7 @@ class AuthRepoImpl extends AuthRepo {
 
   @override
   Future addUserData({required UserEntity user}) async {
-    await firestore.addData(
+    await dataBaseServies .addData(
       documentID: user.uId,
       path: BackEndEndPoint.addUserCollention,
       data: UserModel.fromEntity(user).toMap(),
@@ -142,7 +142,7 @@ class AuthRepoImpl extends AuthRepo {
 
   @override
   Future<UserEntity> readUserData({required String userID}) async {
-    var userdata = await firestore.readData(
+    var userdata = await dataBaseServies.readData(
       documentID: userID,
       path: BackEndEndPoint.readUserCollention,
     );

@@ -1,15 +1,15 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:tager/feature/auth_feature/data/repos/auth_repo_impl.dart';
 import 'package:tager/feature/auth_feature/domain/entity/user_entity.dart';
+import 'package:tager/feature/auth_feature/domain/repos/auth_repo.dart';
 
 part 'sign_up_state.dart';
 
 class CreateUserWithEmailAndPasswordCubit
     extends Cubit<CreateUserWithEmailAndPasswordState> {
-  CreateUserWithEmailAndPasswordCubit( this.authRepoImpl)
+  CreateUserWithEmailAndPasswordCubit(this.authRepo)
     : super(CreateUserWithEmailAndPasswordInitial());
-  final AuthRepoImpl authRepoImpl;
+  final AuthRepo authRepo;
 
   Future<void> createUserWithEmailAndPassword({
     required String email,
@@ -17,7 +17,7 @@ class CreateUserWithEmailAndPasswordCubit
     required String name,
   }) async {
     emit(CreateUserWithEmailAndPasswordLoadingState());
-    var result = await authRepoImpl.createUserWithEmailAndPassword(
+    var result = await authRepo.createUserWithEmailAndPassword(
       email: email,
       password: password,
       name: name,

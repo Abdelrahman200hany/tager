@@ -1,6 +1,7 @@
-import 'dart:io';
+
 
 import 'package:tager/core/entity/product_entity.dart';
+import 'package:tager/core/helpers/get_avg_rating.dart';
 import 'package:tager/core/models/review_model.dart';
 
 class ProductModel {
@@ -8,14 +9,14 @@ class ProductModel {
   final int productPrice, unitAmount, numberOfCalories, expretationsMounths;
   final bool isFeature;
   final bool isOrganic;
-  final num avgRating = 0, ratingCount = 0;
+  final num avgRating, ratingCount = 0;
   final List<ReviewModel> reviews;
   final int sellingCount;
 
-  final File productImageFile;
   String? productImage;
 
   ProductModel({
+    this.avgRating = 0,
     this.sellingCount = 0,
     required this.productName,
     required this.productDes,
@@ -27,13 +28,13 @@ class ProductModel {
     required this.isFeature,
     required this.isOrganic,
     required this.reviews,
-    required this.productImageFile,
+
     this.productImage,
   });
 
   factory ProductModel.fromjson(Map<String, dynamic> json) {
     return ProductModel(
-      productImageFile: File(json['productImageFile']),
+      avgRating: getAvgRating(json['reviews']),
       sellingCount: json['sellingCount'],
       reviews: (json['reviews'] as List)
           .map((e) => ReviewModel.fromjson(e))
@@ -46,7 +47,6 @@ class ProductModel {
       productDes: json['productDes'],
       productPrice: json['productPrice'],
       productName: json['productName'],
-      // productImageFile: File(json['productImageFile']),
       productImage: json['productImage'],
       isOrganic: json['isOrganic'],
     );
@@ -65,7 +65,7 @@ class ProductModel {
       productDes: productDes,
       productPrice: productPrice,
       productName: productName,
-      productImageFile: productImageFile,
+
       productImage: productImage,
       isOrganic: isOrganic,
     );
