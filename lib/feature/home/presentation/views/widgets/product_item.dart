@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tager/core/entity/product_entity.dart';
 import 'package:tager/core/uitls/app_color.dart';
 import 'package:tager/core/uitls/app_style.dart';
 import 'package:tager/core/uitls/assets.dart';
-import 'package:tager/feature/home/presentation/views/widgets/increment_widget.dart';
+import 'package:tager/core/widgets/custom_counter_widget.dart';
+import 'package:tager/feature/cart/presentaion/manager/cubit/cart_cubit.dart';
 
 class ProductItem extends StatelessWidget {
   const ProductItem({super.key, required this.item});
@@ -59,7 +61,12 @@ class ProductItem extends StatelessWidget {
                 context,
               ).copyWith(color: AppColor.kSecondyColorLight),
             ),
-            trailing: IncrementWidget(),
+            trailing: CustomCounterWidget(
+              icon: Icons.add,
+              onPressed: () {
+                context.read<CartCubit>().addProduct(item);
+              },
+            ),
           ),
         ],
       ),

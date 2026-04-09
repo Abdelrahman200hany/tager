@@ -1,9 +1,8 @@
-
-
+import 'package:equatable/equatable.dart';
 import 'package:tager/core/entity/review_entity.dart';
 
-
-class ProductEntity {
+// ignore: must_be_immutable
+class ProductEntity extends Equatable {
   final String productName, productDes, productCode;
   final int productPrice, unitAmount, numberOfCalories, expretationsMounths;
   final bool isFeature;
@@ -27,4 +26,8 @@ class ProductEntity {
     this.productImage,
     this.isOrganic = false,
   });
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [productCode];
 }

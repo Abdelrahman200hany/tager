@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tager/core/uitls/app_color.dart';
+import 'package:tager/feature/cart/presentaion/views/cart_view.dart';
 import 'package:tager/feature/catogry/presentation/views/catogry_view.dart';
 import 'package:tager/feature/home/presentation/views/home_view.dart';
 
@@ -43,7 +44,7 @@ class _MainViewBodyState extends State<MainViewBody> {
       ),
       body: IndexedStack(
         index: currentIndex,
-        children: [HomeView(), CatogryView(), SizedBox(), SizedBox()],
+        children: [HomeView(), CatogryView(), CartView(), SizedBox()],
       ),
     );
   }
